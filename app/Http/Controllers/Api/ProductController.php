@@ -30,6 +30,11 @@ class ProductController extends Controller
         if (request()->has('fabrics')) {
             $product->fabrics()->createMany(request()->get('fabrics'));
         }
+
+        if (request()->has('legs')) {
+            $product->legs()->createMany(request()->get('legs'));
+        }
+
         return response($product, 200);
     }
 

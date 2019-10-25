@@ -10,7 +10,10 @@ class Product extends Model
     use SoftDeletes;
 
     protected $guarded = [];
-    protected $with = ['fabrics:id,name,description'];
+    protected $with = [
+        'fabrics:id,name,description',
+        'legs:id,name,description'
+    ];
 
     public function path()
     {
@@ -20,5 +23,10 @@ class Product extends Model
     public function fabrics()
     {
         return $this->morphedByMany('App\Fabric', 'optionable', 'options');
+    }
+
+    public function legs()
+    {
+        return $this->morphedByMany('App\Leg', 'optionable', 'options');
     }
 }

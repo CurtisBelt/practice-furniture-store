@@ -4,12 +4,11 @@
 
 use App\Option;
 use Faker\Generator as Faker;
+use App\Fabric;
+use App\Leg;
 
 $factory->define(Option::class, function (Faker $faker) {
-    $optionables = [
-        App\Fabric::class
-        // App\Legs::class
-    ];
+    $optionables = [Fabric::class, Leg::class];
     $optionableType = $faker->randomElement($optionables);
     $optionable = factory($optionableType)->create();
 
