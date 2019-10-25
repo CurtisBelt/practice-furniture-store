@@ -10,9 +10,15 @@ class Product extends Model
     use SoftDeletes;
 
     protected $guarded = [];
+    protected $with = ['fabrics:id,name,description'];
 
     public function path()
     {
         return "/api/products/{$this->id}";
+    }
+
+    public function fabrics()
+    {
+        return $this->morphedByMany('App\Fabric', 'optionable', 'options');
     }
 }

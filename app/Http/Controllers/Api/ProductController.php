@@ -26,6 +26,10 @@ class ProductController extends Controller
     public function store()
     {
         $product = Product::create($this->validateRequest());
+
+        if (request()->has('fabrics')) {
+            $product->fabrics()->createMany(request()->get('fabrics'));
+        }
         return response($product, 200);
     }
 

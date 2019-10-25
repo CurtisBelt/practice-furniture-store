@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('products', 'Api\ProductController');
+Route::apiResource('fabrics', 'Api\FabricController');
+Route::apiResource('products/{product}/fabrics', 'Api\FabricController');
